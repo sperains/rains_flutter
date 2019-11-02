@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'demo/list_view_demo.dart';
+
 
 void main() => runApp(MyApp());
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
@@ -12,7 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.yellow
+        //主题颜色
+        primarySwatch: Colors.yellow, 
+        // 水波纹特效颜色
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+        splashColor: Colors.white70
       ),
       home: Home()
     );
@@ -45,6 +48,9 @@ class Home extends StatelessWidget {
           ],
           elevation: 0,
           bottom: TabBar(
+            unselectedLabelColor: Colors.black38,
+            indicatorColor: Colors.black45,
+            indicatorSize: TabBarIndicatorSize.label,
             tabs: <Widget>[
               Tab(icon: Icon(Icons.local_florist),),
               Tab(icon: Icon(Icons.change_history),),
