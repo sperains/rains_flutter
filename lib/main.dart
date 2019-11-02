@@ -34,11 +34,6 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
           title: Text('Sperains'),
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'navagation',
-            onPressed: () => debugPrint(' navigation is pressed'),
-          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -64,7 +59,37 @@ class Home extends StatelessWidget {
             Icon(Icons.change_history, size: 128,),
             Icon(Icons.directions_bike, size: 128,),
           ],
-        )
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('header'.toUpperCase()),
+                decoration: BoxDecoration(
+                  color: Colors.grey[100]
+                ),
+              ),
+              ListTile(
+                title: Text('Messages', textAlign: TextAlign.right,),
+                trailing: Icon(Icons.message, color: Colors.black12, size: 22,),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                title: Text('Favorite', textAlign: TextAlign.right,),
+                trailing: Icon(Icons.favorite, color: Colors.black12, size: 22,),
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                title: Text('Setting', textAlign: TextAlign.right,),
+                trailing: Icon(Icons.settings, color: Colors.black12, size: 22,),
+                onTap: () => Navigator.pop(context),
+              ),
+
+            ],
+          ),
+        
+        ),
       ),
     );
   }
