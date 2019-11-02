@@ -64,10 +64,22 @@ class Home extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              DrawerHeader(
-                child: Text('header'.toUpperCase()),
+              UserAccountsDrawerHeader(
+                accountName: Text('Sperains'),
+                accountEmail: Text('chenai0122@gmail.com'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage('http://b-ssl.duitang.com/uploads/item/201603/26/20160326084943_CZjhV.thumb.700_0.jpeg'),
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.grey[100]
+                  color: Colors.yellow[400],
+                  image: DecorationImage(
+                    image: NetworkImage('http://cdn.duitang.com/uploads/item/201511/15/20151115172353_e4wLV.thumb.700_0.jpeg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.yellow[400].withOpacity(0.6), 
+                      BlendMode.hardLight
+                    ),
+                  )
                 ),
               ),
               ListTile(
