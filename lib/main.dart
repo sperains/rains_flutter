@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rains_flutter/demo/bottom_navigation_bar_demo.dart';
+import 'package:rains_flutter/demo/list_view_demo.dart';
 
 
 void main() => runApp(MyApp());
@@ -24,7 +26,6 @@ class MyApp extends StatelessWidget {
 
 
 class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class Home extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            Icon(Icons.local_florist, size: 128,),
+            ListViewDemo(),
             Icon(Icons.change_history, size: 128,),
             Icon(Icons.directions_bike, size: 128,),
           ],
@@ -100,8 +101,8 @@ class Home extends StatelessWidget {
 
             ],
           ),
-        
         ),
+        bottomNavigationBar: BottomNavigationBarDemo()
       ),
     );
   }
