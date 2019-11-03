@@ -5,8 +5,14 @@ class LayoutDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconBadge(
-      Icons.pool
+    return Container(
+      child: Column(
+        children: <Widget>[
+          IconBadge(Icons.public, size: 64,),
+          IconBadge(Icons.unfold_more, size: 64,),
+          IconBadge(Icons.airport_shuttle, size: 64,),
+        ],
+      ),
     );
  }
 }
