@@ -6,7 +6,7 @@ class LayoutDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Row(
         children: <Widget>[
           IconBadge(Icons.public, size: 64,),
           IconBadge(Icons.unfold_more, size: 64,),
