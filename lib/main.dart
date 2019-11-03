@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rains_flutter/demo/basic_demo.dart';
 import 'package:rains_flutter/demo/bottom_navigation_bar_demo.dart';
+import 'package:rains_flutter/demo/layout_demo.dart';
 import 'package:rains_flutter/demo/list_view_demo.dart';
 
 
@@ -60,7 +61,7 @@ class Home extends StatelessWidget {
             ListViewDemo(),
             // Icon(Icons.change_history, size: 128,),
             BasicDemo(),
-            Icon(Icons.directions_bike, size: 128,),
+            LayoutDemo()
           ],
         ),
         drawer: Drawer(
