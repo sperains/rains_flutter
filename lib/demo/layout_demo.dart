@@ -7,10 +7,11 @@ class LayoutDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          IconBadge(Icons.public, size: 64,),
-          IconBadge(Icons.unfold_more, size: 64,),
-          IconBadge(Icons.airport_shuttle, size: 64,),
+          IconBadge(Icons.public,),
+          IconBadge(Icons.unfold_more,),
+          IconBadge(Icons.airport_shuttle,),
         ],
       ),
     );
