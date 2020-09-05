@@ -1,113 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:rains_flutter/demo/basic_demo.dart';
-import 'package:rains_flutter/demo/bottom_navigation_bar_demo.dart';
-import 'package:rains_flutter/demo/layout_demo.dart';
-import 'package:rains_flutter/demo/list_view_demo.dart';
+import 'package:rains_flutter/pages/login/login_page.dart';
 
+import 'pages/goods.dart';
+import 'pages/group-buy.dart';
+import 'pages/home/home-page.dart';
+import 'pages/in-time-buy.dart';
+import 'pages/personal.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        //主题颜色
-        primarySwatch: Colors.yellow, 
-        // 水波纹特效颜色
-        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-        splashColor: Colors.white70
+        primaryColor: Colors.orange,
+        accentColor: Colors.orangeAccent,
       ),
-      home: Home()
+      home: CustomBottomNavigationBar(),
     );
   }
 }
 
 
-class Home extends StatelessWidget {
+
+
+class CustomBottomNavigationBar extends StatefulWidget {
+  @override
+  _CustomBottomNavigationBarState createState() => _CustomBottomNavigationBarState();
+}
+
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+
+  int currentIndex = 0;
+  List barItemOptions = [
+    { "activeIcon": "assets/images/home_p.png", "title": "首页", "icon": "assets/images/home_n.png",},
+    { "activeIcon": "assets/images/sort_sel.png", "title": "团购", "icon": "assets/images/sort.png",},
+//    { "activeIcon": "assets/images/cate_p.png", "title": "即时达", "icon": "assets/images/cate_n.png",},
+    { "activeIcon": "assets/images/cart_sel.png", "title": "优选", "icon": "assets/images/cart.png",},
+    { "activeIcon": "assets/images/me_p.png", "title": "我的", "icon": "assets/images/me_n.png",}
+  ];
+
+  List<Widget> bodyList = [
+    LoginPage(),
+    GroupBuy(),
+    InTimeBuy(),
+    Goods(),
+    Personal()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          title: Text('Sperains'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              tooltip: 'search',
-              onPressed: () => debugPrint(' search is pressed'),
-            )
-          ],
-          elevation: 0,
-          bottom: TabBar(
-            unselectedLabelColor: Colors.black38,
-            indicatorColor: Colors.black45,
-            indicatorSize: TabBarIndicatorSize.label,
-            tabs: <Widget>[
-              Tab(icon: Icon(Icons.local_florist),),
-              Tab(icon: Icon(Icons.change_history),),
-              Tab(icon: Icon(Icons.directions_bike),),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            ListViewDemo(),
-            // Icon(Icons.change_history, size: 128,),
-            BasicDemo(),
-            LayoutDemo()
-          ],
-        ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                accountName: Text('Sperains'),
-                accountEmail: Text('chenai0122@gmail.com'),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage('http://b-ssl.duitang.com/uploads/item/201603/26/20160326084943_CZjhV.thumb.700_0.jpeg'),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.yellow[400],
-                  image: DecorationImage(
-                    image: NetworkImage('http://cdn.duitang.com/uploads/item/201511/15/20151115172353_e4wLV.thumb.700_0.jpeg'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.yellow[400].withOpacity(0.6), 
-                      BlendMode.hardLight
-                    ),
-                  )
-                ),
-              ),
-              ListTile(
-                title: Text('Messages', textAlign: TextAlign.right,),
-                trailing: Icon(Icons.message, color: Colors.black12, size: 22,),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                title: Text('Favorite', textAlign: TextAlign.right,),
-                trailing: Icon(Icons.favorite, color: Colors.black12, size: 22,),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                title: Text('Setting', textAlign: TextAlign.right,),
-                trailing: Icon(Icons.settings, color: Colors.black12, size: 22,),
-                onTap: () => Navigator.pop(context),
-              ),
-
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBarDemo()
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedFontSize: 10,
+        unselectedFontSize: 10,
+        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        items: barItemOptions.asMap().keys.map((key) => BottomNavigationBarItem(
+            icon: Image.asset( key == currentIndex ? barItemOptions[key]['activeIcon'] : barItemOptions[key]['icon'], width: 24, height: 24,),
+            title: Text(barItemOptions[key]['title'])
+        )).toList(),
+        currentIndex: currentIndex,
+        onTap: (int index) {
+          setState(() {
+            this.currentIndex = index;
+          });
+        },
       ),
+      body: bodyList[currentIndex],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
-

@@ -26,20 +26,27 @@ class _BottomNavigationBarItemState extends State<BottomNavigationBarDemo> {
       fixedColor: Colors.black,
       items: [
         BottomNavigationBarItem(
-          title: Text('Explore'),
-          icon: Icon(Icons.explore),
+          title: Text('首页'),
+          icon: ImageIcon(
+            AssetImage('assets/images/home_n.png'),
+            size: 20,
+          ),
         ),
         BottomNavigationBarItem(
-          title: Text('History'),
-          icon: Icon(Icons.history)
+          title: Text('团购'),
+          icon: Icon(Icons.group_add)
         ),
         BottomNavigationBarItem(
-          title: Text('List'),
+          title: Text('及时达'),
           icon: Icon(Icons.list)
         ),
         BottomNavigationBarItem(
-          title: Text('Person'),
+          title: Text('优选'),
           icon: Icon(Icons.person)
+        ),
+        BottomNavigationBarItem(
+            title: Text('我的'),
+            icon: Icon(Icons.person)
         ),
       ],
     );
