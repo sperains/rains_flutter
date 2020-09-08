@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rains_flutter/pages/goods.dart';
 import 'package:rains_flutter/pages/other/SwapColorDemo1.dart';
 import 'package:rains_flutter/pages/other/SwapColorDemo2.dart';
@@ -51,7 +52,7 @@ class _ServiceGridListState extends State<ServiceGridList> {
       padding: EdgeInsets.symmetric(vertical: 0),
       children: serviceList.map((item) => InkWell(
         child: ServiceItem(data: ServiceItemViewModel(
-            icon: Image.network(item['picUrl'], height: 50 , width: 50),
+            icon: Image.network(item['picUrl'], height: ScreenUtil().setHeight(50) , width: ScreenUtil().setWidth(30)),
             title: item['name']
         )),
         onTap: () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rains_flutter/pages/home/service-grid-list.dart';
 
 import 'swiper-widget.dart';
@@ -13,8 +14,8 @@ class Home extends StatelessWidget {
               showSearch(context: context, delegate: SearchBarDelegate());
             },
             child: Container(
-              height: 30.0,
-              width: 180,
+              height: ScreenUtil().setHeight(30),
+              width: ScreenUtil().setHeight(180),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10)
@@ -22,7 +23,7 @@ class Home extends StatelessWidget {
               alignment: Alignment.center,
               child: Text('免费心理咨询', style: TextStyle(
                 color: Colors.black54,
-                fontSize: 13
+                fontSize: ScreenUtil().setSp(13)
               )),
             ),
         ),
@@ -55,7 +56,7 @@ class Home extends StatelessWidget {
                       child: SwiperWidget(),
                     ),
                     Container(
-                      height: 160,
+                      height: ScreenUtil().setHeight(160),
                       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),

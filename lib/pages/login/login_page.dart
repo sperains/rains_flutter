@@ -24,6 +24,12 @@ class LoginPage extends StatelessWidget {
         recoverPasswordButton: "发送",
         goBackButton: "返回",
       ),
+      emailValidator: (str) {
+        return 'null';
+      },
+      passwordValidator: (str) {
+        return 'null';
+      },
 
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rains_flutter/pages/home/home.dart';
 import 'package:rains_flutter/pages/login/login_page.dart';
 
 import 'pages/goods.dart';
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.orange,
+        primaryColor: Colors.amber,
         accentColor: Colors.orangeAccent,
       ),
       home: CustomBottomNavigationBar(),
@@ -43,8 +45,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   ];
 
   List<Widget> bodyList = [
+    Home(),
+//    GroupBuy(),
     LoginPage(),
-    GroupBuy(),
     InTimeBuy(),
     Goods(),
     Personal()
@@ -52,6 +55,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334);
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
